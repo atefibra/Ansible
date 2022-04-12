@@ -1,2 +1,4 @@
 ---
-- name:
+- name: crud file for ansible
+  hosts: serveur12
+  tasks:
