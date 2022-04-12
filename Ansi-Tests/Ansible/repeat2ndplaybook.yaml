@@ -1,0 +1,9 @@
+---
+- name: create a directory
+  hosts: serveur3
+
+tasks:
+  - name: create a folder
+    file: dest=/root/demoatef state=directory
+  - name: copy a file into a folder
+    copy: src=/root/file1.yaml dest=/root/demoatef

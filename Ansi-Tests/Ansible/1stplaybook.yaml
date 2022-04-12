@@ -1,0 +1,25 @@
+---
+- name: serveur details
+  hosts: serveur12
+  remote_user: root
+
+  tasks:
+    - name: REMOVING APACHE
+      apt: pkg=apache2 state=absent
+---
+- name: serveur details
+  hosts: serveur12
+  remote_user: root
+
+  tasks:
+    - name: installing Apache
+      apt: pkg=apache2 state=latest
+---
+- name: STARTING APACHE2
+  hosts: serveur12
+  remote_user: root
+
+  tasks:
+    - name: STARTING Apache
+      service: pkg=apache2 state=started
+

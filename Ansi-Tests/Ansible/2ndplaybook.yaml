@@ -1,0 +1,18 @@
+############# Create a file with content, create a directory, then copy that file into a folder
+---
+- name: create a file and directory then copy
+  hosts: serveur3
+
+  tasks:
+    - name: create file & directory
+      copy:
+        dest: "/root/file1.yaml"
+        content: |
+            Hello this is a file created by barha
+            You are welcome!
+
+    - name: create & directory
+      file: dest=/root/demodir state=directory
+
+    - name: copy the file
+      copy: src=/root/file1.yaml dest=/root/demodir/
