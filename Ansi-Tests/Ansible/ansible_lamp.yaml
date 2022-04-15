@@ -1,0 +1,41 @@
+---
+- name: Installing LAMP & Starting Svcs
+  hosts: serveur3
+  become_user: atef
+
+  tasks:
+      - name: Installing Apache2
+        apt:
+             name: apache2
+             state: present
+
+      - name: Starting service
+        service:
+            name: apache2
+            enabled: yes
+            state: started
+
+      - name: Installing Mysql
+        apt:
+            name:
+              - mariadb-serveur
+              - mariadb
+            state: present
+
+      - name: Starting Mysql
+        service:
+            name: mysqld
+            enabled: yes
+            state: started
+
+      - name: Installing PHP
+        apt:
+           name:
+               - php
+               - php-mysql
+           state: latest
+
+      - name: Copy index file
+        copy:
+           src: /etc/ansible/atefworkshop/index.php
+           dest: /var/www/html/index.php
